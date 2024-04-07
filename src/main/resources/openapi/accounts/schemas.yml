@@ -18,6 +18,12 @@ components:
           description: "Email of user"
           example: "john@doe.com"
           required: true
+        provider:
+          type: string
+          description: "Provider of user"
+          example: "STRIPE"
+          required: true
+
     account:
       type: object
       properties:
@@ -39,6 +45,16 @@ components:
           type: string
           description: "Email of user"
           example: "john@doe.com"
+        provider:
+          type: string
+          description: "Provider of user"
+          example: "STRIPE"
+          required: true
+        providerAccountId:
+          type: string
+          description: "Provider's account ID"
+          readOnly: true
+          example: "acct_1233437t"
         createdAt:
           type: string
           format: date-time
@@ -52,9 +68,12 @@ components:
           readOnly: true
           example: "2022-04-13T01:52:40.690387Z"
       example:
-        - id: usr_fba5b240-0e68-4e64-aca6-f12022dc4be3
+        - id: "usr_fba5b240-0e68-4e64-aca6-f12022dc4be3"
           firstName: "John"
           lastName: "Doe"
+          email: "john@doe.com"
+          provider: "STRIPE"
+          providerAccountId: "acct_fba5b240-0e68-4e64-aca6-f12022dc4be3"
           creationAt: "2022-04-13T01:52:40.690387Z"
           updatedAt: "2022-04-13T01:52:40.690387Z"
 
@@ -62,3 +81,29 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/account"
+
+    updateAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: "User's ID"
+          readOnly: true
+          example: "fba5b240-0e68-4e64-aca6-f12022dc4be3"
+          required: true
+        firstName:
+          type: string
+          description: "User's first name"
+          example: "John"
+          required: true
+        lastName:
+          type: string
+          description: "User's last name"
+          example: "Doe"
+          required: true
+        email:
+          type: string
+          description: "Email of user"
+          example: "john@doe.com"
+          required: true

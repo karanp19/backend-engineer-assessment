@@ -1,10 +1,10 @@
 package com.midas.app.activities;
 
 import com.midas.app.models.Account;
-import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
+import java.util.Optional;
+import java.util.UUID;
 
-@ActivityInterface
 public interface AccountActivity {
   /**
    * saveAccount saves an account in the data store.
@@ -16,11 +16,11 @@ public interface AccountActivity {
   Account saveAccount(Account account);
 
   /**
-   * createPaymentAccount creates a payment account in the system or provider.
+   * getAccount fetches an account in the data store.
    *
-   * @param account is the account to be created
-   * @return Account
+   * @param accountId is the accountId to be fetched
+   * @return Optional<Account>
    */
   @ActivityMethod
-  Account createPaymentAccount(Account account);
+  Optional<Account> getAccount(UUID accountId);
 }

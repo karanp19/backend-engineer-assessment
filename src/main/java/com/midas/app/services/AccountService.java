@@ -10,7 +10,7 @@ public interface AccountService {
    * @param details is the details of the account to be created.
    * @return Account
    */
-  Account createAccount(Account details);
+  Account createAccount(Account details) throws Exception;
 
   /**
    * getAccounts returns a list of accounts.
@@ -18,4 +18,12 @@ public interface AccountService {
    * @return List<Account>
    */
   List<Account> getAccounts();
+
+  /**
+   * updateAccount updates an existing account in the system or provider.
+   *
+   * @param details is the details of the account to be created.
+   * @return Account
+   */
+  Account updateAccount(Account details) throws Exception;
 }
